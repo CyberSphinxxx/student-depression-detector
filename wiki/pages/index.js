@@ -28,7 +28,7 @@ export default function Home() {
         <div className="prose prose-gray max-w-none">
           <p className="text-lg leading-relaxed text-gray-700">
             Welcome to the documentation for the <strong>Student Depression Detector</strong>. 
-            This is an end-to-end Machine Learning project that predicts whether a student is at risk of depression 
+            This is an end-to-end Machine Learning project that I built to predict whether a student is at risk of depression 
             based on various lifestyle, academic, and socioeconomic factors.
           </p>
         </div>
@@ -40,6 +40,33 @@ export default function Home() {
               <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">{stat.label}</span>
             </div>
           ))}
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-lg p-6 mt-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">How It Works</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-gray-700 text-lg leading-relaxed">
+            <li><strong>Load Data</strong> — The Student Depression Dataset (27,901 rows, 18 columns) is loaded using pandas</li>
+            <li><strong>Clean & Encode</strong> — Categorical columns are label-encoded, 3 missing values in Financial Stress are dropped</li>
+            <li><strong>EDA</strong> — Distributions, correlations, and class balance are visualized using matplotlib and seaborn</li>
+            <li><strong>Balance with SMOTE</strong> — The mild class imbalance (58.5% vs 41.5%) is addressed using SMOTE on the training set</li>
+            <li><strong>Train 5 Models</strong> — Logistic Regression, K-Nearest Neighbors, Decision Tree, Random Forest, and Naive Bayes are trained</li>
+            <li><strong>Evaluate & Compare</strong> — Models are evaluated using Accuracy, Precision, Recall, and F1 Score</li>
+            <li><strong>Select Best Models</strong> — Logistic Regression and Random Forest are selected for further tuning</li>
+          </ol>
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-lg p-6 mt-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Technologies Used</h3>
+          <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-700">
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">Python 3</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">pandas</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">numpy</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">scikit-learn</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium text-center">imbalanced-learn (SMOTE)</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">matplotlib</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">seaborn</li>
+            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium text-center">Jupyter / Google Colab</li>
+          </ul>
         </div>
 
         <div className="bg-blue-50 border border-blue-100 rounded-lg p-6 mt-8">
