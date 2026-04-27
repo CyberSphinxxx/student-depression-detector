@@ -42,33 +42,6 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6 mt-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">How It Works</h3>
-          <ol className="list-decimal pl-5 space-y-2 text-gray-700 text-lg leading-relaxed">
-            <li><strong>Load Data</strong> — The Student Depression Dataset (27,901 rows, 18 columns) is loaded using pandas</li>
-            <li><strong>Clean & Encode</strong> — Categorical columns are label-encoded, 3 missing values in Financial Stress are dropped</li>
-            <li><strong>EDA</strong> — Distributions, correlations, and class balance are visualized using matplotlib and seaborn</li>
-            <li><strong>Balance with SMOTE</strong> — The mild class imbalance (58.5% vs 41.5%) is addressed using SMOTE on the training set</li>
-            <li><strong>Train 5 Models</strong> — Logistic Regression, K-Nearest Neighbors, Decision Tree, Random Forest, and Naive Bayes are trained</li>
-            <li><strong>Evaluate & Compare</strong> — Models are evaluated using Accuracy, Precision, Recall, and F1 Score</li>
-            <li><strong>Select Best Models</strong> — Logistic Regression and Random Forest are selected for further tuning</li>
-          </ol>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6 mt-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Technologies Used</h3>
-          <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-700">
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">Python 3</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">pandas</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">numpy</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">scikit-learn</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium text-center">imbalanced-learn (SMOTE)</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">matplotlib</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium">seaborn</li>
-            <li className="bg-gray-50 px-4 py-2 rounded-md border border-gray-100 flex items-center justify-center font-medium text-center">Jupyter / Google Colab</li>
-          </ul>
-        </div>
-
         <div className="bg-blue-50 border border-blue-100 rounded-lg p-6 mt-8">
           <h3 className="text-lg font-semibold text-blue-900 mb-3">Important Links</h3>
           <ul className="space-y-2">
@@ -93,6 +66,51 @@ export default function Home() {
               </a>
             </li>
           </ul>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">How It Works</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Load Data", desc: "The Student Depression Dataset (27,901 rows, 18 columns) is loaded using pandas" },
+              { title: "Clean and Encode", desc: "Categorical columns are label-encoded; 3 missing Financial Stress rows are dropped" },
+              { title: "EDA", desc: "Distributions, correlations, and class balance are visualized using matplotlib and seaborn" },
+              { title: "Balance with SMOTE", desc: "Mild class imbalance (58.5% vs 41.5%) is addressed using SMOTE on the training set only" },
+              { title: "Train 5 Models", desc: "Logistic Regression, K-Nearest Neighbors, Decision Tree, Random Forest, and Naive Bayes" },
+              { title: "Evaluate and Compare", desc: "Models are scored using Accuracy, Precision, Recall, and F1 Score" },
+              { title: "Select Best Models", desc: "Logistic Regression and Random Forest are selected for further tuning" }
+            ].map((step, idx) => (
+              <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                <div className="text-7xl font-black text-gray-50 absolute -top-4 -right-2 group-hover:text-gray-100 transition-colors pointer-events-none select-none z-0">
+                  {idx + 1}
+                </div>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="bg-blue-100 text-blue-700 font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">
+                      {idx + 1}
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">{step.title}</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 mb-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Technologies Used</h3>
+          <div className="flex flex-wrap gap-3">
+            {[
+              "Python 3", "pandas", "numpy", "scikit-learn", 
+              "imbalanced-learn (SMOTE)", "matplotlib", "seaborn", 
+              "Jupyter / Google Colab"
+            ].map((tech, idx) => (
+              <span key={idx} className="bg-gray-50 text-gray-700 px-5 py-2.5 rounded-full text-sm font-medium border border-gray-200 shadow-sm hover:bg-gray-100 transition-colors cursor-default">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </>

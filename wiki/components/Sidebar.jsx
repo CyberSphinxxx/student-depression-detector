@@ -8,7 +8,8 @@ import {
   GitMerge, 
   Activity, 
   Code, 
-  Info 
+  Info,
+  HelpCircle
 } from 'lucide-react';
 
 const navigation = [
@@ -16,10 +17,11 @@ const navigation = [
   { name: 'Dataset Info', href: '/dataset', icon: Database },
   { name: 'EDA Results', href: '/eda', icon: BarChart2 },
   { name: 'Model Comparison', href: '/models', icon: Cpu },
-  { name: 'SMOTE Explanation', href: '/smote', icon: GitMerge },
+  { name: 'Class Imbalance', href: '/smote', icon: GitMerge },
   { name: 'Activity Summaries', href: '/activities', icon: Activity },
   { name: 'Code Snippets', href: '/snippets', icon: Code },
   { name: 'About', href: '/about', icon: Info },
+  { name: 'Defense Q&A', href: '/qa', icon: HelpCircle },
 ];
 
 export default function Sidebar({ isOpen, setIsOpen }) {

@@ -11,12 +11,12 @@ export default function About() {
 
   const timelineHeaders = ['Phase', 'Activity', 'Status'];
   const timelineRows = [
-    ['Phase 1', 'Dataset Selection and EDA Planning (Lecture Activity 2)', 'Done'],
-    ['Phase 2', 'EDA Implementation in Jupyter Notebook (Lab Activity 2)', 'Done'],
-    ['Phase 3', 'Model Comparison Planning (Lecture Activity 3)', 'Done'],
-    ['Phase 4', 'Model Training and Comparison (Lab Activity 3)', 'Done'],
-    ['Phase 5', 'Hyperparameter Tuning', 'In Progress'],
-    ['Phase 6', 'Final Model and Presentation', 'Upcoming'],
+    ['Phase 1', 'Dataset Selection and EDA Planning (Lecture Activity 2)', <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Done</span>],
+    ['Phase 2', 'EDA Implementation in Jupyter Notebook (Lab Activity 2)', <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Done</span>],
+    ['Phase 3', 'Model Comparison Planning (Lecture Activity 3)', <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Done</span>],
+    ['Phase 4', 'Model Training and Comparison (Lab Activity 3)', <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Done</span>],
+    ['Phase 5', 'Hyperparameter Tuning', <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">In Progress</span>],
+    ['Phase 6', 'Final Model and Presentation', <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Upcoming</span>],
   ];
 
   return (
@@ -31,15 +31,9 @@ export default function About() {
           <p className="text-lg text-gray-600">Information about the developer and the project context.</p>
         </div>
 
-        <div className="prose prose-gray max-w-none text-gray-700 bg-gray-50 p-6 rounded-lg border border-gray-100">
+        <div className="prose prose-gray max-w-none text-gray-700">
           <p>
-            This wiki documents the development of the <strong>Student Depression Detector</strong>, a machine learning project built as part of <strong>IT325 Machine Learning</strong> at the University of Science and Technology of Southern Philippines (USTP). The project was completed as a <strong>PIT (Project in Training)</strong> requirement for the course.
-          </p>
-          <p>
-            The goal of the project is to build a reliable classification model that can predict whether a student is at risk of depression based on their academic performance, lifestyle habits, and socioeconomic background. Early detection of depression in students is important because timely intervention — whether through counseling, peer support, or academic accommodations — can significantly improve student wellbeing and academic outcomes.
-          </p>
-          <p>
-            The project covers the full machine learning pipeline: data loading, exploratory data analysis, data preprocessing, model training and comparison, and model selection. Two models — Logistic Regression and Random Forest — were selected for further tuning based on their consistent performance across all evaluation metrics.
+            This wiki documents the development of the Student Depression Detector, a machine learning project built as part of IT325 Machine Learning at the University of Science and Technology of Southern Philippines (USTP), completed as a PIT (Project in Training) requirement. The goal is to build a classification model that predicts whether a student is at risk of depression based on academic, lifestyle, and socioeconomic factors. The project covers the full ML pipeline: data loading, EDA, preprocessing, model training and comparison, and model selection. Logistic Regression and Random Forest were selected for further tuning.
           </p>
         </div>
 

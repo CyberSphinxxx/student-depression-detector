@@ -6,14 +6,15 @@ export default function Dataset() {
   const findingsRows = [
     ['Total Rows', '27,901'],
     ['Total Columns', '18'],
-    ['Missing Values', '3 (only in the Financial Stress column)'],
+    ['Missing Values', '3 (Financial Stress column only)'],
     ['Duplicate Rows', '0'],
-    ['Target Class Balance', '58.5% Depressed (1), 41.5% Not Depressed (0)'],
+    ['Depressed (1)', '16,336 students — 58.5%'],
+    ['Not Depressed (0)', '11,565 students — 41.5%'],
   ];
 
   const tableHeaders = ['Column', 'Type', 'Description', 'Role'];
   const tableRows = [
-    ['id', 'Numeric', 'Row identifier', 'Dropped (not used)'],
+    ['id', 'Numeric', 'Row identifier', 'Dropped — not used'],
     ['Gender', 'Categorical', 'Male or Female', 'Input feature'],
     ['Age', 'Numeric', 'Age of the student', 'Input feature'],
     ['City', 'Categorical', 'City where the student lives', 'Input feature'],
@@ -30,7 +31,7 @@ export default function Dataset() {
     ['Work/Study Hours', 'Numeric', 'Hours spent working or studying per day', 'Input feature'],
     ['Financial Stress', 'Numeric', 'Self-rated 1–5 (1=Low, 5=High)', 'Input feature — strong predictor'],
     ['Family History of Mental Illness', 'Categorical', 'Yes or No', 'Input feature'],
-    ['Depression', 'Numeric', 'Target variable — 0 = Not Depressed, 1 = Depressed', 'Target'],
+    ['Depression', 'Numeric', 'Target variable — 0 = Not Depressed, 1 = Depressed', 'Target variable'],
   ];
 
   return (
@@ -47,7 +48,7 @@ export default function Dataset() {
 
         <div className="prose prose-gray max-w-none text-gray-700">
           <p>
-            The Student Depression Dataset was sourced from Kaggle and contains responses from 27,901 students across various cities in India. Each row represents one student, with 17 input features and one binary target variable (Depression). The dataset was collected to help identify lifestyle, academic, and socioeconomic patterns associated with student depression.
+            The Student Depression Dataset was sourced from Kaggle and contains responses from 27,901 students across various cities in India. Each row represents one student with 17 input features and one binary target variable (Depression). The dataset was collected to help identify lifestyle, academic, and socioeconomic patterns associated with student depression.
           </p>
         </div>
 
@@ -66,16 +67,16 @@ export default function Dataset() {
         <div>
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Data Quality Findings</h2>
           <MetricTable headers={findingsHeaders} rows={findingsRows} />
-          <p className="text-gray-700 mt-4 bg-gray-50 p-4 rounded border border-gray-100">
-            How missing values were handled: The 3 rows with missing Financial Stress values were dropped using <code className="bg-gray-200 px-1 py-0.5 rounded text-sm text-gray-800">df_model.dropna()</code> since 3 rows out of 27,901 is negligible (0.01% of data).
+          <p className="text-sm text-gray-500 mt-2">
+            The 3 rows with missing Financial Stress values were dropped using df_model.dropna() since 3 rows out of 27,901 is only 0.01% of the data.
           </p>
         </div>
 
         <div>
           <h2 className="text-xl font-semibold text-gray-800 mb-4 mt-8">Feature Dictionary</h2>
           <MetricTable headers={tableHeaders} rows={tableRows} />
-          <p className="text-gray-700 mt-4 bg-gray-50 p-4 rounded border border-gray-100">
-            <strong>Note:</strong> The <code className="bg-gray-200 px-1 py-0.5 rounded text-sm text-gray-800">id</code> column was dropped before training since it is just a row number and carries no predictive information. All categorical columns were label-encoded using scikit-learn's <code className="bg-gray-200 px-1 py-0.5 rounded text-sm text-gray-800">LabelEncoder</code> before being passed to the models.
+          <p className="text-gray-700 mt-4">
+            The id column was dropped before training since it is just a row number with no predictive value. All categorical columns were converted to numbers using scikit-learn's LabelEncoder before being passed to the models.
           </p>
         </div>
       </div>

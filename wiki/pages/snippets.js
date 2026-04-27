@@ -31,13 +31,13 @@ print("Shape after cleaning:", df_model.shape)
       title: '2. Train/Test Split',
       code: `from sklearn.model_selection import train_test_split
 
-# Separate features and target
-# Drop id (not useful) and Depression (target)
+# Separate features (X) and target (y)
+# Drop id (not useful) and Depression (this is what we predict)
 X = df_model.drop(columns=["Depression", "id"])
 y = df_model["Depression"]
 
 # Split 80% training, 20% testing
-# stratify=y ensures the class ratio is preserved in both sets
+# stratify=y preserves the class ratio in both sets
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
@@ -64,8 +64,8 @@ models = {
 
 results = []
 for name, model in models.items():
-    model.fit(X_train, y_train)         # train on training data
-    y_pred = model.predict(X_test)      # predict on test data
+    model.fit(X_train, y_train)       # train on training data
+    y_pred = model.predict(X_test)    # predict on unseen test data
 
     results.append({
         "Model"    : name,
@@ -80,17 +80,17 @@ for name, model in models.items():
       title: '4. Applying SMOTE',
       code: `from imblearn.over_sampling import SMOTE
 
-# Initialize SMOTE
+# Initialize SMOTE with fixed random state for reproducibility
 smote = SMOTE(random_state=42)
 
-# Apply only to training data — never apply SMOTE to test data
+# Apply SMOTE ONLY to training data — never to test data
 X_train_sm, y_train_sm = smote.fit_resample(X_train, y_train)
 
 print("Before SMOTE:", y_train.value_counts().to_dict())
-# {1: 13069, 0: 9252}
+# Output: {1: 13069, 0: 9252}
 
 print("After SMOTE :", pd.Series(y_train_sm).value_counts().to_dict())
-# {1: 13069, 0: 13069}`,
+# Output: {1: 13069, 0: 13069}`,
     },
     {
       title: '5. Plotting the Confusion Matrix',
@@ -98,15 +98,14 @@ print("After SMOTE :", pd.Series(y_train_sm).value_counts().to_dict())
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 
-# Get predictions from the best model
+# Train the best model
 best_model = LogisticRegression(max_iter=1000, random_state=42)
 best_model.fit(X_train, y_train)
 y_pred = best_model.predict(X_test)
 
-# Generate confusion matrix
+# Generate and plot the confusion matrix
 cm = confusion_matrix(y_test, y_pred)
 
-# Plot it
 fig, ax = plt.subplots(figsize=(6, 5))
 sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
             xticklabels=["Not Depressed", "Depressed"],

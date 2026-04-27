@@ -5,90 +5,122 @@ import CollapsibleSection from '@/components/CollapsibleSection';
 export default function Smote() {
   const smoteCode = `from imblearn.over_sampling import SMOTE
 
-# Initialize SMOTE with a fixed random state for reproducibility
-smote = SMOTE(random_state=42)
+# This was NOT used in the final project
+# Included for reference only — the class imbalance (58.5/41.5) 
+# was not severe enough to require oversampling
 
-# Apply SMOTE only to the training data
-# X_train_sm and y_train_sm are the balanced versions
+smote = SMOTE(random_state=42)
 X_train_sm, y_train_sm = smote.fit_resample(X_train, y_train)
 
 print("Before SMOTE:", y_train.value_counts().to_dict())
-# Output: {1: 13069, 0: 9252}
-
-print("After SMOTE :", pd.Series(y_train_sm).value_counts().to_dict())
-# Output: {1: 13069, 0: 13069}`;
+print("After SMOTE :", pd.Series(y_train_sm).value_counts().to_dict())`;
 
   return (
     <>
       <Head>
-        <title>SMOTE | Student Depression Detector</title>
+        <title>Class Imbalance — Why I Did Not Use SMOTE | Student Depression Detector</title>
       </Head>
 
-      <div className="space-y-6 animate-in fade-in duration-500">
+      <div className="space-y-6 animate-in fade-in duration-500 pb-12">
         <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">SMOTE</h1>
-          <p className="text-lg text-gray-600">Synthetic Minority Oversampling Technique</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Class Imbalance — Why I Did Not Use SMOTE</h1>
+          <p className="text-lg text-gray-600">Addressing dataset distribution and sampling decisions.</p>
         </div>
 
-        <div className="prose prose-gray max-w-none text-gray-700">
-          <p>
-            During the Exploratory Data Analysis, I observed a mild class imbalance in the target variable — 58.5% of students are labeled as depressed and 41.5% are not. While this imbalance is not extreme, it can still cause models to lean toward predicting the majority class. To address this, I applied SMOTE (Synthetic Minority Oversampling Technique) to the training set before fitting the models.
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800">Section 1: What is Class Imbalance?</h2>
+          <p className="text-gray-700 leading-relaxed">
+            Class imbalance happens when one category in the target variable has significantly more samples than the other. In a binary classification problem like this one, it means the model sees far more examples of one class during training, which can cause it to become biased toward always predicting the majority class.
           </p>
-        </div>
+        </section>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-3">How SMOTE Works</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            SMOTE does not simply duplicate existing samples. Instead, it generates new synthetic data points by:
-          </p>
-          <ol className="list-decimal pl-5 space-y-2 text-gray-700">
-            <li>Picking a sample from the minority class (Not Depressed)</li>
-            <li>Finding its nearest neighbors in the feature space</li>
-            <li>Creating a new synthetic point somewhere between the original sample and one of its neighbors</li>
-          </ol>
-          <p className="text-gray-700 leading-relaxed mt-4">
-            This results in a more diverse and balanced training set without the risk of exact duplication.
-          </p>
-        </div>
-
-        <CollapsibleSection title="Before vs After SMOTE" defaultOpen={true}>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800">Section 2: My Dataset's Class Distribution</h2>
           <div className="overflow-x-auto my-4 border border-gray-200 rounded-lg shadow-sm">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left font-semibold text-gray-900 uppercase tracking-wider">Class</th>
-                  <th scope="col" className="px-6 py-3 text-left font-semibold text-gray-900 uppercase tracking-wider">Before SMOTE</th>
-                  <th scope="col" className="px-6 py-3 text-left font-semibold text-gray-900 uppercase tracking-wider">After SMOTE</th>
+                  <th scope="col" className="px-6 py-3 text-left font-semibold text-gray-900 uppercase">Class</th>
+                  <th scope="col" className="px-6 py-3 text-left font-semibold text-gray-900 uppercase">Count</th>
+                  <th scope="col" className="px-6 py-3 text-left font-semibold text-gray-900 uppercase">Percentage</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">Not Depressed (0)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">9,252 samples</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">13,069 samples (synthetic added)</td>
+                <tr>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">Depressed (1)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">16,336</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">58.5%</td>
                 </tr>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">Depressed (1)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">13,069 samples</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">13,069 samples (unchanged)</td>
+                <tr>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">Not Depressed (0)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">11,565</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-700">41.5%</td>
                 </tr>
-                <tr className="hover:bg-gray-50 transition-colors bg-gray-50 font-semibold">
+                <tr className="bg-gray-50 font-bold">
                   <td className="px-6 py-4 whitespace-nowrap text-gray-900">Total</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-900">22,321</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-900">26,138</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-900">27,901</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-900">100%</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p className="text-gray-700 mt-4 bg-gray-50 p-4 rounded border border-gray-100">
-            Note: SMOTE was only applied to the <strong>training set</strong> (80% of data). The test set was kept original and untouched to ensure fair and realistic evaluation. Applying SMOTE to the test set would give artificially inflated results.
+          <p className="text-sm text-gray-500 italic">
+            "This was identified during the EDA phase by running df['Depression'].value_counts() on the dataset."
           </p>
-        </CollapsibleSection>
+        </section>
 
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Implementation</h2>
-          <CodeBlock language="python" code={smoteCode} />
-        </div>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800">Section 3: What is SMOTE?</h2>
+          <p className="text-gray-700 leading-relaxed">
+            SMOTE stands for Synthetic Minority Oversampling Technique. It is a common method for addressing class imbalance by generating new synthetic data points for the minority class. Instead of simply duplicating existing samples, SMOTE creates new points between existing minority class samples and their nearest neighbors in the feature space.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            SMOTE is typically recommended when the class imbalance is severe — for example, a 90/10 or 95/5 split where the minority class is extremely underrepresented.
+          </p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800">Section 4: Why I Decided Not to Use SMOTE</h2>
+          <p className="text-gray-700 leading-relaxed font-medium">
+            After analyzing the class distribution in my dataset, I decided that SMOTE was not necessary for the following reasons:
+          </p>
+          <ul className="list-disc pl-5 space-y-3 text-gray-700">
+            <li><strong>The imbalance is minor, not severe</strong> — A 58.5% vs 41.5% split is considered a mild imbalance. The general threshold where SMOTE becomes truly necessary is when the minority class makes up less than 20–30% of the data. My dataset does not meet that threshold.</li>
+            <li><strong>The minority class is still well-represented</strong> — With 11,565 samples in the Not Depressed class, there is more than enough data for the models to learn from. SMOTE is most helpful when the minority class has very few samples, making it hard for the model to learn its patterns.</li>
+            <li><strong>The models already performed well without it</strong> — Logistic Regression achieved 84.48% accuracy and an F1 score of 0.8694 without any oversampling. Random Forest achieved 83.87% accuracy and 0.8643 F1. These results show that the models were already learning both classes effectively.</li>
+            <li><strong>SMOTE introduces synthetic data</strong> — Generating artificial data points adds a layer of uncertainty. Since my dataset is large enough and the imbalance is mild, introducing synthetic samples could add noise without meaningful benefit.</li>
+            <li><strong>Stratified splitting was used instead</strong> — I used <code>stratify=y</code> in <code>train_test_split</code> to ensure both the training and test sets maintain the same 58.5% / 41.5% class ratio. This is a simpler and safer way to handle mild imbalance without modifying the data itself.</li>
+          </ul>
+        </section>
+
+        <section className="space-y-4 pt-6">
+          <h2 className="text-xl font-semibold text-gray-800">Section 5: When Would I Use SMOTE?</h2>
+          <CollapsibleSection title="When would SMOTE be appropriate?" defaultOpen={false}>
+            <div className="space-y-3 text-gray-700">
+              <p>I would consider applying SMOTE if:</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>The minority class made up less than 20–25% of the dataset</li>
+                <li>The model's recall for the minority class was very low (below 0.70), indicating it was failing to detect those cases</li>
+                <li>The confusion matrix showed a very large number of false negatives compared to true positives</li>
+              </ul>
+              <p className="mt-4 pt-4 border-t border-gray-100">
+                In those scenarios, SMOTE would help the model get more exposure to the minority class and improve its ability to detect underrepresented cases. For this project, none of those conditions apply — the models already show strong recall (Logistic Regression: 0.8825, Random Forest: 0.8770), confirming that the mild imbalance did not significantly hurt performance.
+              </p>
+            </div>
+          </CollapsibleSection>
+        </section>
+
+        <section className="space-y-4 pt-6">
+          <h2 className="text-xl font-semibold text-gray-800">Section 6: Code Reference (for context only)</h2>
+          <CollapsibleSection title="SMOTE code (not used — for reference only)" defaultOpen={false}>
+            <div className="space-y-4">
+              <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded border-l-4 border-gray-400">
+                "The following code shows how SMOTE would be applied if the class imbalance were more severe. It was not executed in this project."
+              </p>
+              <CodeBlock language="python" code={smoteCode} />
+            </div>
+          </CollapsibleSection>
+        </section>
       </div>
     </>
   );
