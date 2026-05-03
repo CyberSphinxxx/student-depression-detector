@@ -126,12 +126,12 @@ plt.show()`,
       </Head>
 
       <div className="space-y-6 animate-in fade-in duration-500">
-        <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Code Snippets</h1>
-          <p className="text-lg text-gray-600">Core Python implementation snippets used in the project.</p>
+        <div className="border-b border-border-primary pb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Code Snippets</h1>
+          <p className="text-lg text-foreground/60">Core Python implementation snippets used in the project.</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {snippets.map((snippet, idx) => (
             <CollapsibleSection key={idx} title={snippet.title} defaultOpen={true}>
               <CodeBlock language="python" code={snippet.code} />

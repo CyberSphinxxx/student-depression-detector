@@ -43,32 +43,32 @@ export default function Models() {
       </Head>
 
       <div className="space-y-6 animate-in fade-in duration-500">
-        <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Model Comparison</h1>
-          <p className="text-lg text-gray-600">Evaluating and selecting the best performing machine learning models.</p>
+        <div className="border-b border-border-primary pb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Model Comparison</h1>
+          <p className="text-lg text-foreground/60">Evaluating and selecting the best performing machine learning models.</p>
         </div>
 
-        <div className="prose prose-gray max-w-none text-gray-700">
+        <div className="prose prose-gray max-w-none text-foreground/80 leading-relaxed">
           <p>
             Five machine learning models were trained on the Student Depression Dataset and evaluated using four key metrics. The data was split 80/20 (training/testing) with stratification to preserve the class ratio. The goal was to find models that score well in accuracy but also minimize false negatives — missing students who are actually depressed.
           </p>
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">What Each Metric Means</h2>
+          <h2 className="text-2xl font-semibold text-foreground mt-8 mb-4">What Each Metric Means</h2>
           <MetricTable headers={metricHeaders} rows={metricRows} />
         </div>
 
         <div className="my-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Model Performance</h2>
+          <h2 className="text-2xl font-semibold text-foreground mb-4">Model Performance</h2>
           <MetricTable headers={tableHeaders} rows={tableRows} bestValues={bestValues} />
-          <p className="text-gray-700 mt-4 bg-gray-50 p-4 rounded border border-gray-100">
+          <p className="text-foreground/70 mt-6 bg-sidebar p-5 rounded-lg border border-border-primary shadow-sm leading-relaxed italic">
             Logistic Regression leads in Accuracy (84.48%) and F1 Score (0.8694). Naive Bayes leads in Recall (0.9960) but its accuracy of only 65.57% means it incorrectly classifies too many non-depressed students as depressed, making it unreliable in practice.
           </p>
         </div>
 
         <CollapsibleSection title="Model Selection Justification" defaultOpen={true}>
-          <div className="text-gray-700 space-y-4">
+          <div className="text-foreground/80 space-y-4 leading-relaxed">
             <p>
               I selected Logistic Regression and Random Forest as the two models to carry forward for hyperparameter tuning. Logistic Regression achieved the highest accuracy (84.48%) and the highest F1 score (0.8694). Random Forest was a close second at 83.87% accuracy and 0.8643 F1. Both significantly outperformed KNN and Decision Tree. While Naive Bayes had the highest recall at 0.9960, its 65.57% accuracy means it flags far too many non-depressed students as depressed. A model with high recall or accuracy is not always the best — in mental health applications you need balance, and Logistic Regression and Random Forest provide that better than the other three models.
             </p>
@@ -76,26 +76,27 @@ export default function Models() {
         </CollapsibleSection>
 
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">What is a Confusion Matrix?</h2>
-          <div className="prose prose-gray max-w-none text-gray-700 bg-blue-50 p-6 rounded-lg border border-blue-100 mb-6">
-            <p className="mt-0">A confusion matrix shows the breakdown of correct and incorrect predictions for each class. It has four values:</p>
-            <ul className="mb-0">
-              <li>True Positive (TP): Correctly predicted as Depressed</li>
-              <li>True Negative (TN): Correctly predicted as Not Depressed</li>
-              <li>False Positive (FP): Predicted Depressed but actually Not Depressed — a false alarm</li>
-              <li>False Negative (FN): Predicted Not Depressed but actually Depressed — the most dangerous error in this use case</li>
+          <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">What is a Confusion Matrix?</h2>
+          <div className="prose prose-gray max-w-none text-foreground bg-blue-500/10 p-8 rounded-xl border border-blue-500/20 mb-8 shadow-sm">
+            <p className="mt-0 font-medium text-blue-600 dark:text-blue-400">A confusion matrix shows the breakdown of correct and incorrect predictions for each class. It has four values:</p>
+            <ul className="mb-0 space-y-2 text-foreground/80">
+              <li><strong className="text-foreground">True Positive (TP)</strong>: Correctly predicted as Depressed</li>
+              <li><strong className="text-foreground">True Negative (TN)</strong>: Correctly predicted as Not Depressed</li>
+              <li><strong className="text-foreground">False Positive (FP)</strong>: Predicted Depressed but actually Not Depressed — a false alarm</li>
+              <li><strong className="text-foreground">False Negative (FN)</strong>: Predicted Not Depressed but actually Depressed — the most dangerous error in this use case</li>
             </ul>
           </div>
           
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Evaluation Visualizations</h3>
-          <div className="grid grid-cols-1 gap-8">
+          <h3 className="text-xl font-semibold text-foreground mb-6">Evaluation Visualizations</h3>
+          <div className="grid grid-cols-1 gap-12">
             {images.map((img, idx) => (
-              <ImageWithCaption 
-                key={idx}
-                src={img.src}
-                alt={img.alt}
-                caption={img.caption}
-              />
+              <div key={idx} className="bg-card border border-border-primary rounded-xl overflow-hidden shadow-sm">
+                <ImageWithCaption 
+                  src={img.src}
+                  alt={img.alt}
+                  caption={img.caption}
+                />
+              </div>
             ))}
           </div>
         </div>

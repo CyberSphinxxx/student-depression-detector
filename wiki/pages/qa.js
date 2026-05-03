@@ -129,20 +129,20 @@ export default function QA() {
       </Head>
 
       <div className="space-y-8 animate-in fade-in duration-500 pb-12">
-        <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Defense Q&A</h1>
-          <p className="text-lg text-gray-600">Frequently asked questions for the project defense.</p>
+        <div className="border-b border-border-primary pb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Defense Q&A</h1>
+          <p className="text-lg text-foreground/60">Frequently asked questions for the project defense.</p>
         </div>
 
         {sections.map((section, sIdx) => (
           <div key={sIdx} className="space-y-4">
-            <h2 className="text-xl font-bold text-gray-800 border-l-4 border-gray-800 pl-4 py-1">
+            <h2 className="text-xl font-bold text-foreground border-l-4 border-accent pl-4 py-1">
               {section.title}
             </h2>
             <div className="space-y-0">
               {section.questions.map((item, qIdx) => (
                 <CollapsibleSection key={qIdx} title={item.q} defaultOpen={false}>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-foreground/80 leading-relaxed">
                     {item.a}
                   </p>
                 </CollapsibleSection>

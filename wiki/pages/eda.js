@@ -49,40 +49,45 @@ export default function EDA() {
       </Head>
 
       <div className="space-y-6 animate-in fade-in duration-500">
-        <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Exploratory Data Analysis (EDA)</h1>
-          <p className="text-lg text-gray-600">Visualizing the patterns and distributions within the dataset.</p>
+        <div className="border-b border-border-primary pb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Exploratory Data Analysis (EDA)</h1>
+          <p className="text-lg text-foreground/60">Visualizing the patterns and distributions within the dataset.</p>
         </div>
 
-        <div className="prose prose-gray max-w-none text-gray-700">
+        <div className="prose prose-gray max-w-none text-foreground/80">
           <p>
             During the Exploratory Data Analysis phase, I investigated the distributions, relationships, and correlations within the Student Depression Dataset. The primary goal was to understand how different features interact with the target variable (Depression) and to identify any patterns that might influence model training. I created six visualizations covering class distribution, age, academic pressure, CGPA, sleep duration, dietary habits, financial stress, and suicidal thoughts history.
           </p>
         </div>
 
         <CollapsibleSection title="Key Observations" defaultOpen={true}>
-          <ol className="list-decimal pl-5 space-y-2 text-gray-700">
-            <li><strong>Class Imbalance</strong> — 58.5% of students are depressed vs 41.5% not depressed. This mild imbalance was addressed using SMOTE on the training set to prevent model bias.</li>
-            <li><strong>Academic Pressure is the strongest predictor</strong> — Students who rated it 4 or 5 out of 5 are significantly more likely to be depressed. Its correlation with depression is 0.47, the highest among all numeric features.</li>
-            <li><strong>Sleep deprivation is a strong risk factor</strong> — Students sleeping less than 5 hours make up the largest depressed group. Getting 7–8 hours of sleep is associated with better mental health outcomes.</li>
-            <li><strong>Diet and financial stress both matter</strong> — Unhealthy diet and high financial stress (levels 4–5) are linked to higher depression rates, pointing to lifestyle and socioeconomic factors as significant contributors.</li>
-            <li><strong>CGPA is a weak predictor</strong> — Despite being an academic metric, CGPA has a correlation of only 0.02 with depression. A student's grades alone cannot predict their mental health.</li>
+          <ol className="list-decimal pl-5 space-y-3 text-foreground/80">
+            <li><strong className="text-foreground">Class Imbalance</strong> — 58.5% of students are depressed vs 41.5% not depressed. This mild imbalance was addressed using SMOTE on the training set to prevent model bias.</li>
+            <li><strong className="text-foreground">Academic Pressure is the strongest predictor</strong> — Students who rated it 4 or 5 out of 5 are significantly more likely to be depressed. Its correlation with depression is 0.47, the highest among all numeric features.</li>
+            <li><strong className="text-foreground">Sleep deprivation is a strong risk factor</strong> — Students sleeping less than 5 hours make up the largest depressed group. Getting 7–8 hours of sleep is associated with better mental health outcomes.</li>
+            <li><strong className="text-foreground">Diet and financial stress both matter</strong> — Unhealthy diet and high financial stress (levels 4–5) are linked to higher depression rates, pointing to lifestyle and socioeconomic factors as significant contributors.</li>
+            <li><strong className="text-foreground">CGPA is a weak predictor</strong> — Despite being an academic metric, CGPA has a correlation of only 0.02 with depression. A student's grades alone cannot predict their mental health.</li>
           </ol>
         </CollapsibleSection>
 
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-6">Visualizations</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <h2 className="text-2xl font-semibold text-foreground mt-12 mb-8">Visualizations</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {images.map((img, idx) => (
-              <div key={idx} className="flex flex-col">
-                <ImageWithCaption 
-                  src={img.src}
-                  alt={img.alt}
-                  caption={img.caption}
-                />
-                <p className="mt-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-md border border-gray-100 flex-grow">
-                  {img.interpretation}
-                </p>
+              <div key={idx} className="flex flex-col bg-card border border-border-primary rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div className="p-2 bg-sidebar border-b border-border-primary">
+                  <ImageWithCaption 
+                    src={img.src}
+                    alt={img.alt}
+                    caption={img.caption}
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Interpretation</h4>
+                  <p className="text-sm text-foreground/70 leading-relaxed">
+                    {img.interpretation}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

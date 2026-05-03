@@ -2,21 +2,22 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import Sidebar from './Sidebar';
 import SearchBar from './SearchBar';
+import ThemeToggle from './ThemeToggle';
 
 export default function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-white overflow-hidden">
+    <div className="flex h-screen bg-background text-foreground overflow-hidden">
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top Header */}
-        <header className="flex-shrink-0 h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <header className="flex-shrink-0 h-16 bg-background border-b border-border-primary flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center lg:hidden">
             <button
               type="button"
-              className="text-gray-500 hover:text-gray-900 focus:outline-none"
+              className="text-foreground/70 hover:text-foreground focus:outline-none"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -24,8 +25,9 @@ export default function Layout({ children }) {
             </button>
           </div>
           
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end items-center gap-4">
             <SearchBar />
+            <ThemeToggle />
           </div>
         </header>
 

@@ -135,33 +135,36 @@ export default function Activities() {
       </Head>
 
       <div className="space-y-6 animate-in fade-in duration-500">
-        <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Activity Summaries</h1>
-          <p className="text-lg text-gray-600">A log of project milestones and lab activities.</p>
+        <div className="border-b border-border-primary pb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Activity Summaries</h1>
+          <p className="text-lg text-foreground/60">A log of project milestones and lab activities.</p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-          <div className="flex overflow-x-auto border-b border-gray-200">
+        <div className="bg-card border border-border-primary rounded-xl overflow-hidden shadow-sm">
+          <div className="flex overflow-x-auto border-b border-border-primary bg-sidebar/50">
             {activities.map((activity, idx) => (
               <button
                 key={idx}
-                className={`whitespace-nowrap px-6 py-4 text-sm font-medium transition-colors focus:outline-none ${
+                className={`whitespace-nowrap px-8 py-5 text-sm font-semibold transition-all focus:outline-none relative ${
                   activeTab === idx
-                    ? 'border-b-2 border-gray-900 text-gray-900 bg-gray-50'
-                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50 border-b-2 border-transparent'
+                    ? 'text-accent'
+                    : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'
                 }`}
                 onClick={() => setActiveTab(idx)}
               >
                 Activity {idx + 1}
+                {activeTab === idx && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent" />
+                )}
               </button>
             ))}
           </div>
 
-          <div className="p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-100">
+          <div className="p-8">
+            <h2 className="text-2xl font-bold text-foreground mb-6 pb-4 border-b border-border-primary/50">
               {activities[activeTab].title}
             </h2>
-            <div className="text-gray-700 leading-relaxed bg-gray-50 p-6 rounded-md border border-gray-100">
+            <div className="text-foreground/80 leading-relaxed bg-sidebar p-8 rounded-xl border border-border-primary/50">
               {activities[activeTab].content}
             </div>
           </div>

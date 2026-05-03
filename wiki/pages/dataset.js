@@ -41,41 +41,41 @@ export default function Dataset() {
       </Head>
 
       <div className="space-y-6 animate-in fade-in duration-500">
-        <div className="border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dataset Information</h1>
-          <p className="text-lg text-gray-600">Overview of the features used in the ML models.</p>
+        <div className="border-b border-border-primary pb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Dataset Information</h1>
+          <p className="text-lg text-foreground/60">Overview of the features used in the ML models.</p>
         </div>
 
-        <div className="prose prose-gray max-w-none text-gray-700">
+        <div className="prose prose-gray max-w-none text-foreground/80">
           <p>
             The Student Depression Dataset was sourced from Kaggle and contains responses from 27,901 students across various cities in India. Each row represents one student with 17 input features and one binary target variable (Depression). The dataset was collected to help identify lifestyle, academic, and socioeconomic patterns associated with student depression.
           </p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <h2 className="text-xl font-semibold text-gray-800 mb-3">Source & Context</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
+        <div className="bg-card border border-border-primary rounded-lg p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-foreground mb-4">Source & Context</h2>
+          <ul className="list-disc pl-5 space-y-3 text-foreground/80">
             <li>
-              <strong>Source:</strong> Kaggle — Student Depression Dataset
+              <strong className="text-foreground">Source:</strong> Kaggle — Student Depression Dataset
             </li>
             <li>
-              <strong>Link:</strong> <a href="https://www.kaggle.com/datasets/hopesb/student-depression-dataset" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View on Kaggle</a>
+              <strong className="text-foreground">Link:</strong> <a href="https://www.kaggle.com/datasets/hopesb/student-depression-dataset" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-400 hover:underline transition-colors">View on Kaggle</a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Data Quality Findings</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-4">Data Quality Findings</h2>
           <MetricTable headers={findingsHeaders} rows={findingsRows} />
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-foreground/50 mt-2 italic">
             The 3 rows with missing Financial Stress values were dropped using df_model.dropna() since 3 rows out of 27,901 is only 0.01% of the data.
           </p>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-4 mt-8">Feature Dictionary</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-4 mt-8">Feature Dictionary</h2>
           <MetricTable headers={tableHeaders} rows={tableRows} />
-          <p className="text-gray-700 mt-4">
+          <p className="text-foreground/80 mt-4 leading-relaxed">
             The id column was dropped before training since it is just a row number with no predictive value. All categorical columns were converted to numbers using scikit-learn's LabelEncoder before being passed to the models.
           </p>
         </div>

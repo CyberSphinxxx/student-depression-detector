@@ -36,7 +36,7 @@ export default function SearchBar() {
   return (
     <div ref={wrapperRef} className="relative w-full max-w-md">
       <div className="relative flex items-center">
-        <Search className="absolute left-3 w-4 h-4 text-gray-400" />
+        <Search className="absolute left-3 w-4 h-4 text-foreground/40" />
         <input
           type="text"
           placeholder="Search sections..."
@@ -46,32 +46,32 @@ export default function SearchBar() {
             setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          className="w-full pl-9 pr-4 py-2 text-sm bg-gray-100 border-transparent rounded-md focus:bg-white focus:border-gray-300 focus:ring-0 transition-colors"
+          className="w-full pl-9 pr-4 py-2 text-sm bg-foreground/5 border-transparent rounded-md focus:bg-background focus:border-border-primary focus:ring-1 focus:ring-accent transition-all text-foreground"
         />
       </div>
 
       {isOpen && query && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-md shadow-lg border border-gray-200 z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-card rounded-md shadow-xl border border-border-primary z-50 overflow-hidden">
           {filteredResults.length > 0 ? (
             <ul className="max-h-60 overflow-auto">
               {filteredResults.map((item, i) => (
                 <li key={i}>
                   <Link 
                     href={item.href}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-foreground/80 hover:bg-foreground/5 transition-colors"
                     onClick={() => {
                       setIsOpen(false);
                       setQuery('');
                     }}
                   >
-                    <div className="font-medium text-gray-900">{item.title}</div>
-                    <div className="text-xs text-gray-500">{item.section}</div>
+                    <div className="font-medium text-foreground">{item.title}</div>
+                    <div className="text-xs text-foreground/50">{item.section}</div>
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
-            <div className="px-4 py-3 text-sm text-gray-500">
+            <div className="px-4 py-3 text-sm text-foreground/50">
               No results found for "{query}"
             </div>
           )}
