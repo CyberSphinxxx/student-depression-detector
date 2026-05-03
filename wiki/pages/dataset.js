@@ -21,7 +21,7 @@ export default function Dataset() {
     ['Profession', 'Categorical', 'Student or working professional', 'Input feature'],
     ['Academic Pressure', 'Numeric', 'Self-rated 1–5 (1=Low, 5=High)', 'Input feature — strong predictor'],
     ['Work Pressure', 'Numeric', 'Self-rated 1–5', 'Input feature'],
-    ['CGPA', 'Numeric', 'Cumulative Grade Point Average (0–10 scale)', 'Input feature — weak predictor'],
+    ['CGPA', 'Numeric', 'Cumulative Grade Point Average (0–10 scale)', 'Input feature — weak predictor (r=0.02)'],
     ['Study Satisfaction', 'Numeric', 'Self-rated 1–5', 'Input feature'],
     ['Job Satisfaction', 'Numeric', 'Self-rated 1–5', 'Input feature'],
     ['Sleep Duration', 'Categorical', 'Less than 5 hours / 5–6 hours / 7–8 hours / More than 8 hours', 'Input feature — strong predictor'],

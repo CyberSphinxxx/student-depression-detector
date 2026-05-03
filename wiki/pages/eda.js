@@ -64,8 +64,10 @@ export default function EDA() {
           <ol className="list-decimal pl-5 space-y-3 text-foreground/80">
             <li><strong className="text-foreground">Class Imbalance</strong> — 58.5% of students are depressed vs 41.5% not depressed. This mild imbalance was addressed using SMOTE on the training set to prevent model bias.</li>
             <li><strong className="text-foreground">Academic Pressure is the strongest predictor</strong> — Students who rated it 4 or 5 out of 5 are significantly more likely to be depressed. Its correlation with depression is 0.47, the highest among all numeric features.</li>
-            <li><strong className="text-foreground">Sleep deprivation is a strong risk factor</strong> — Students sleeping less than 5 hours make up the largest depressed group. Getting 7–8 hours of sleep is associated with better mental health outcomes.</li>
-            <li><strong className="text-foreground">Diet and financial stress both matter</strong> — Unhealthy diet and high financial stress (levels 4–5) are linked to higher depression rates, pointing to lifestyle and socioeconomic factors as significant contributors.</li>
+            <li><strong className="text-foreground">Financial Stress is the second strongest predictor</strong> — Level 4 and 5 stress shows a correlation of 0.36 with depression, highlighting socioeconomic factors.</li>
+            <li><strong className="text-foreground">Suicidal Thoughts history is the strongest visual signal</strong> — Students with a history of suicidal ideation are overwhelmingly more likely to be classified as depressed.</li>
+            <li><strong className="text-foreground">Sleep deprivation is a major risk factor</strong> — Students sleeping less than 5 hours make up the largest depressed group. Getting 7–8 hours of sleep is associated with better mental health outcomes.</li>
+            <li><strong className="text-foreground">Age Trends</strong> — Depressed students trend slightly younger on average (correlation of -0.23), though there is significant overlap across all age groups.</li>
             <li><strong className="text-foreground">CGPA is a weak predictor</strong> — Despite being an academic metric, CGPA has a correlation of only 0.02 with depression. A student's grades alone cannot predict their mental health.</li>
           </ol>
         </CollapsibleSection>

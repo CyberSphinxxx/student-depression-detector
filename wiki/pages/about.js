@@ -49,12 +49,12 @@ export default function About() {
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 border-b border-border-primary/50 pb-6 last:border-0 last:pb-0">
               <span className="font-bold text-foreground sm:w-32 flex-shrink-0 tracking-tight">GitHub</span>
               <a 
-                href="https://github.com/CyberSphinxxx" 
+                href="https://github.com/CyberSphinxxx/student-depression-detector" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-400 hover:underline break-all transition-colors"
               >
-                https://github.com/CyberSphinxxx
+                https://github.com/CyberSphinxxx/student-depression-detector
               </a>
             </div>
 
