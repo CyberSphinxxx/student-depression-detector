@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import Head from "next/head";
 import { predict } from "@/lib/predict";
-import { AlertTriangle, CheckCircle2, RotateCcw, Brain, Info } from "lucide-react";
+import { AlertTriangle, CheckCircle2, RotateCcw, Brain, Info, ChevronDown, FileText, Settings, Calculator } from "lucide-react";
 
 // ─── Field definitions ────────────────────────────────────────────────────────
 const FIELDS = [
@@ -143,16 +143,21 @@ function FieldInput({ field, value, onChange }) {
 
   if (field.type === "select") {
     return (
-      <select
-        id={field.id}
-        value={value}
-        onChange={handleChange}
-        className="w-full px-3 py-2 rounded-lg border border-border-primary bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
-      >
-        {field.options.map((opt) => (
-          <option key={opt} value={opt}>{opt}</option>
-        ))}
-      </select>
+      <div className="relative">
+        <select
+          id={field.id}
+          value={value}
+          onChange={handleChange}
+          className="w-full px-3 py-2 pr-10 rounded-lg border border-border-primary bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all appearance-none"
+        >
+          {field.options.map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          ))}
+        </select>
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-foreground/50">
+          <ChevronDown className="w-4 h-4" />
+        </div>
+      </div>
     );
   }
 
@@ -452,34 +457,47 @@ export default function Detector() {
         </div>
 
         {/* How it works section */}
-        <div className="bg-card border border-border-primary rounded-2xl p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground mb-4">How This Works</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="bg-card border border-border-primary rounded-2xl p-8 shadow-sm">
+          <div className="flex flex-col items-center text-center mb-8">
+            <h2 className="text-2xl font-bold text-foreground">How It Works Behind the Scenes</h2>
+            <p className="text-sm text-foreground/60 mt-2 max-w-xl">
+              This detector runs entirely in your browser using the extracted parameters of our trained Logistic Regression model.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            {/* Connecting line for desktop */}
+            <div className="hidden md:block absolute top-8 left-[16%] right-[16%] h-[2px] bg-border-primary z-0"></div>
+
             {[
               {
                 step: "1",
-                title: "You fill the form",
-                desc: "13 inputs covering academic, social, and lifestyle factors",
+                icon: <FileText className="w-6 h-6 text-accent" />,
+                title: "Input Collection",
+                desc: "You provide 13 data points covering academic pressure, lifestyle habits, and mental health indicators.",
               },
               {
                 step: "2",
-                title: "Preprocessing runs",
-                desc: "Label encoding, feature engineering (Stress Score, Sleep Category, Study-Work Balance), and StandardScaler normalization — all in JavaScript",
+                icon: <Settings className="w-6 h-6 text-accent" />,
+                title: "In-Browser Processing",
+                desc: "The app performs Label Encoding, scales values using StandardScaler, and computes engineered features (e.g., Stress Score).",
               },
               {
                 step: "3",
-                title: "LR inference",
-                desc: "dot(coef, scaled_features) + intercept → sigmoid → probability of depression",
+                icon: <Calculator className="w-6 h-6 text-accent" />,
+                title: "Model Inference",
+                desc: "We compute the dot product of your scaled features with the model's coefficients, then apply the sigmoid function to get a probability.",
               },
             ].map((s) => (
-              <div key={s.step} className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-accent/15 text-accent font-bold text-sm flex items-center justify-center shrink-0">
-                  {s.step}
+              <div key={s.step} className="relative z-10 flex flex-col items-center text-center bg-background rounded-xl p-6 border border-border-primary shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-16 h-16 rounded-full bg-card border-[6px] border-background flex items-center justify-center mb-4 shadow-sm relative">
+                  {s.icon}
+                  <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-foreground text-background text-xs font-bold flex items-center justify-center">
+                    {s.step}
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground text-sm">{s.title}</p>
-                  <p className="text-xs text-foreground/50 mt-1 leading-relaxed">{s.desc}</p>
-                </div>
+                <h3 className="font-semibold text-foreground text-base mb-2">{s.title}</h3>
+                <p className="text-sm text-foreground/60 leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
