@@ -26,7 +26,8 @@ const FIELDS = [
   {
     id: "cgpa",
     key: "CGPA",
-    label: "CGPA",
+    label: "Grades (CGPA)",
+    help: "0.0 is the lowest, 10.0 is the highest",
     type: "range",
     min: 0,
     max: 10,
@@ -38,6 +39,7 @@ const FIELDS = [
     id: "academic_pressure",
     key: "Academic Pressure",
     label: "Academic Pressure",
+    help: "0 = None, 5 = Extreme pressure",
     type: "range",
     min: 0,
     max: 5,
@@ -49,6 +51,7 @@ const FIELDS = [
     id: "work_pressure",
     key: "Work Pressure",
     label: "Work Pressure",
+    help: "0 = None, 5 = Extreme pressure",
     type: "range",
     min: 0,
     max: 5,
@@ -60,6 +63,7 @@ const FIELDS = [
     id: "study_satisfaction",
     key: "Study Satisfaction",
     label: "Study Satisfaction",
+    help: "0 = Not satisfied, 5 = Highly satisfied",
     type: "range",
     min: 0,
     max: 5,
@@ -71,6 +75,7 @@ const FIELDS = [
     id: "job_satisfaction",
     key: "Job Satisfaction",
     label: "Job Satisfaction",
+    help: "0 = Not satisfied, 5 = Highly satisfied",
     type: "range",
     min: 0,
     max: 5,
@@ -106,6 +111,7 @@ const FIELDS = [
     id: "work_study_hours",
     key: "Work/Study Hours",
     label: "Work / Study Hours per Day",
+    help: "Total hours spent actively working or studying",
     type: "number",
     min: 0,
     max: 24,
@@ -116,6 +122,7 @@ const FIELDS = [
     id: "financial_stress",
     key: "Financial Stress",
     label: "Financial Stress",
+    help: "0 = No stress, 5 = Extreme stress",
     type: "range",
     min: 0,
     max: 5,
@@ -369,12 +376,17 @@ export default function Detector() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
                 {[...col1, ...col2].map((field) => (
                   <div key={field.id} className="space-y-1.5">
-                    <label
-                      htmlFor={field.id}
-                      className="text-sm font-medium text-foreground/70"
-                    >
-                      {field.label}
-                    </label>
+                    <div className="flex flex-col">
+                      <label
+                        htmlFor={field.id}
+                        className="text-sm font-medium text-foreground/70"
+                      >
+                        {field.label}
+                      </label>
+                      {field.help && (
+                        <span className="text-[10px] text-foreground/40 mt-0.5">{field.help}</span>
+                      )}
+                    </div>
                     <FieldInput
                       field={field}
                       value={values[field.key]}
