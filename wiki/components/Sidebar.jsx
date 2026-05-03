@@ -46,7 +46,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       <div className={`fixed inset-y-0 left-0 z-30 w-64 bg-sidebar border-r border-border-primary transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
           <div className="h-16 flex items-center px-6 border-b border-border-primary">
-            <span className="text-lg font-bold text-foreground">ML Wiki</span>
+            <span className="text-lg font-bold text-foreground">Student Depression Detector Wiki</span>
           </div>
           
           <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
