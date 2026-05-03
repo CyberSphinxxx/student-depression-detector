@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import CollapsibleSection from '@/components/CollapsibleSection';
 
-export default function QA() {
+export default function FAQ() {
   const sections = [
     {
       title: "About the Dataset",
@@ -125,13 +125,13 @@ export default function QA() {
   return (
     <>
       <Head>
-        <title>Defense Q&A | Student Depression Detector</title>
+        <title>FAQ | Student Depression Detector</title>
       </Head>
 
       <div className="space-y-8 animate-in fade-in duration-500 pb-12">
         <div className="border-b border-border-primary pb-4">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Defense Q&A</h1>
-          <p className="text-lg text-foreground/60">Frequently asked questions for the project defense.</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Frequently Asked Questions</h1>
+          <p className="text-lg text-foreground/60">Common questions about the dataset, methodology, and models.</p>
         </div>
 
         {sections.map((section, sIdx) => (

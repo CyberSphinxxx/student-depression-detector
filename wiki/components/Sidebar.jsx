@@ -22,7 +22,7 @@ const navigation = [
   { name: 'Activity Summaries', href: '/activities', icon: Activity },
   { name: 'Code Snippets', href: '/snippets', icon: Code },
   { name: 'About', href: '/about', icon: Info },
-  { name: 'Defense Q&A', href: '/qa', icon: HelpCircle },
+  { name: 'FAQ', href: '/faq', icon: HelpCircle },
 ];
 
 const demoNavigation = [
