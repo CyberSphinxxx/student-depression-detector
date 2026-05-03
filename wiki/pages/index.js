@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   const stats = [
@@ -42,7 +43,27 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6 mt-8">
+        {/* Live Detector CTA */}
+        <Link
+          href="/detector"
+          className="group flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-accent/10 hover:bg-accent/15 border border-accent/25 rounded-2xl p-6 transition-all duration-200 mt-2"
+        >
+          <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span className="text-2xl">🧠</span>
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="font-bold text-foreground">Try the Live Detector</span>
+              <span className="text-[10px] font-bold bg-accent text-white px-2 py-0.5 rounded-full">LIVE</span>
+            </div>
+            <p className="text-sm text-foreground/60">
+              Run the trained Logistic Regression model directly in your browser — no server, no latency.
+            </p>
+          </div>
+          <span className="text-accent font-bold text-lg group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
+
+        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Important Links</h3>
           <ul className="space-y-2">
             <li>
@@ -104,7 +125,7 @@ export default function Home() {
             {[
               "Python 3", "pandas", "numpy", "scikit-learn", 
               "imbalanced-learn (SMOTE)", "matplotlib", "seaborn", 
-              "Jupyter / Google Colab"
+              "Jupyter / Google Colab", "Next.js", "Vercel"
             ].map((tech, idx) => (
               <span key={idx} className="bg-sidebar text-foreground/80 px-5 py-2.5 rounded-full text-sm font-medium border border-border-primary shadow-sm hover:bg-foreground/5 transition-colors cursor-default">
                 {tech}

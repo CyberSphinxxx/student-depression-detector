@@ -9,7 +9,8 @@ import {
   Activity, 
   Code, 
   Info,
-  HelpCircle
+  HelpCircle,
+  Brain
 } from 'lucide-react';
 
 const navigation = [
@@ -22,6 +23,10 @@ const navigation = [
   { name: 'Code Snippets', href: '/snippets', icon: Code },
   { name: 'About', href: '/about', icon: Info },
   { name: 'Defense Q&A', href: '/qa', icon: HelpCircle },
+];
+
+const demoNavigation = [
+  { name: 'Try the Detector', href: '/detector', icon: Brain },
 ];
 
 export default function Sidebar({ isOpen, setIsOpen }) {
@@ -61,6 +66,32 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                 >
                   <Icon className={`w-5 h-5 ${isActive ? 'text-accent' : 'text-foreground/50'}`} />
                   {item.name}
+                </Link>
+              );
+            })}
+
+            {/* Live Demo separator */}
+            <div className="pt-4 pb-1">
+              <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-foreground/30">Live Demo</p>
+            </div>
+
+            {demoNavigation.map((item) => {
+              const isActive = router.pathname === item.href;
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'bg-accent/10 text-accent'
+                      : 'text-foreground/70 hover:bg-foreground/5 hover:text-foreground'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-accent' : 'text-foreground/50'}`} />
+                  {item.name}
+                  <span className="ml-auto text-[10px] font-bold bg-accent/15 text-accent px-1.5 py-0.5 rounded-full">LIVE</span>
                 </Link>
               );
             })}
