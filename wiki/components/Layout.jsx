@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { Menu } from 'lucide-react';
+import { useRouter } from 'next/router';
 import Sidebar from './Sidebar';
 import SearchBar from './SearchBar';
 import ThemeToggle from './ThemeToggle';
 
 export default function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const router = useRouter();
+
+  // Detector page uses a wider layout for the side-by-side form
+  const maxWClass = router.pathname === '/detector' ? 'max-w-7xl' : 'max-w-4xl';
 
   return (
     <div className="flex h-screen bg-background text-foreground overflow-hidden">
@@ -33,7 +38,7 @@ export default function Layout({ children }) {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className={`${maxWClass} mx-auto px-4 sm:px-6 lg:px-8 py-8 transition-all duration-300`}>
             {children}
           </div>
         </main>

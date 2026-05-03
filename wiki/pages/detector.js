@@ -359,14 +359,14 @@ export default function Detector() {
         </div>
 
         {/* Form + Result layout */}
-        <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
-          {/* Form — takes 3/5 width on XL */}
-          <div className="xl:col-span-3 space-y-6">
-            <div className="bg-card border border-border-primary rounded-2xl p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-foreground mb-5">Your Information</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Form — takes 7/12 width on lg, 8/12 on xl */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-6">
+            <div className="bg-card border border-border-primary rounded-2xl p-6 lg:p-8 shadow-sm">
+              <h2 className="text-xl font-semibold text-foreground mb-6">Your Information</h2>
 
-              {/* Two-column grid on md+ */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+              {/* Two-column grid on sm+ */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
                 {[...col1, ...col2].map((field) => (
                   <div key={field.id} className="space-y-1.5">
                     <label
@@ -434,14 +434,14 @@ export default function Detector() {
             </div>
           </div>
 
-          {/* Result panel — takes 2/5 width on XL, sticky on desktop */}
-          <div className="xl:col-span-2" id="detector-result">
+          {/* Result panel — takes 5/12 width on lg, 4/12 on xl, sticky on desktop */}
+          <div className="lg:col-span-5 xl:col-span-4" id="detector-result">
             {result ? (
-              <div className="xl:sticky xl:top-6">
+              <div className="lg:sticky lg:top-6">
                 <ResultCard result={result} onReset={handleReset} />
               </div>
             ) : (
-              <div className="xl:sticky xl:top-6 h-full min-h-[200px] rounded-2xl border border-border-primary border-dashed bg-card flex flex-col items-center justify-center text-center p-8 gap-4">
+              <div className="lg:sticky lg:top-6 h-full min-h-[300px] rounded-2xl border border-border-primary border-dashed bg-card flex flex-col items-center justify-center text-center p-8 gap-4">
                 <div className="w-16 h-16 rounded-2xl bg-foreground/5 flex items-center justify-center">
                   <Brain className="w-8 h-8 text-foreground/20" />
                 </div>
