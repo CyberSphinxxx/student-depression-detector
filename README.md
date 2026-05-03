@@ -141,4 +141,4 @@ Run `python train.py` to populate the table below:
 | joblib | Model serialisation |
 
 ## Author
-*(Your name here)*
+*John Lemar Gonzales*
