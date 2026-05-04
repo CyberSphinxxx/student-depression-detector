@@ -47,18 +47,7 @@ const FIELDS = [
     default: 3,
     format: (v) => `${v}/5`,
   },
-  {
-    id: "work_pressure",
-    key: "Work Pressure",
-    label: "Work Pressure",
-    help: "0 = None, 5 = Extreme pressure",
-    type: "range",
-    min: 0,
-    max: 5,
-    step: 1,
-    default: 0,
-    format: (v) => `${v}/5`,
-  },
+
   {
     id: "study_satisfaction",
     key: "Study Satisfaction",
@@ -71,18 +60,7 @@ const FIELDS = [
     default: 3,
     format: (v) => `${v}/5`,
   },
-  {
-    id: "job_satisfaction",
-    key: "Job Satisfaction",
-    label: "Job Satisfaction",
-    help: "0 = Not satisfied, 5 = Highly satisfied",
-    type: "range",
-    min: 0,
-    max: 5,
-    step: 1,
-    default: 0,
-    format: (v) => `${v}/5`,
-  },
+
   {
     id: "sleep_duration",
     key: "Sleep Duration",
