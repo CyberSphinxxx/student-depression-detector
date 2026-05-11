@@ -118,7 +118,8 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                 </Link>
               );
             })}
-          </nav>
+          </div>
+        </nav>
           
           <div className="p-4 border-t border-border-primary">
             <a 
