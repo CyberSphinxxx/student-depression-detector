@@ -51,15 +51,15 @@ def load_artifacts():
 # =============================================================
 # COLOUR PALETTE
 # =============================================================
-BG_COLOR       = "#F0F2F5"
+BG_COLOR       = "#FFFFFF"
 CARD_COLOR     = "#FFFFFF"
 PRIMARY_COLOR  = "#2563EB"   # blue-600
-SUCCESS_COLOR  = "#16A34A"   # green-600
-DANGER_COLOR   = "#DC2626"   # red-600
+SUCCESS_COLOR  = "#22C55E"   # green-500
+DANGER_COLOR   = "#EF4444"   # red-500
 LABEL_COLOR    = "#374151"   # gray-700
-HEADER_COLOR   = "#1E3A8A"   # blue-900
+HEADER_COLOR   = "#FFFFFF"
 SUBTITLE_COLOR = "#6B7280"   # gray-500
-RESET_COLOR    = "#6B7280"
+RESET_COLOR    = "#E5E7EB"
 BTN_TEXT       = "#FFFFFF"
 FONT_FAMILY    = "Segoe UI"
 
@@ -95,15 +95,15 @@ class DepressionDetectorApp:
         tk.Label(
             header_frame,
             text="🧠  Student Depression Detector",
-            font=(FONT_FAMILY, 20, "bold"),
-            bg=HEADER_COLOR, fg="#FFFFFF"
+            font=(FONT_FAMILY, 24, "bold"),
+            bg=HEADER_COLOR, fg="#1F2937"
         ).pack()
 
         tk.Label(
             header_frame,
             text="Fill in the details below to check depression risk",
             font=(FONT_FAMILY, 11),
-            bg=HEADER_COLOR, fg="#BFDBFE"
+            bg=HEADER_COLOR, fg="#6B7280"
         ).pack(pady=(2, 0))
 
     # ----------------------------------------------------------
@@ -156,10 +156,8 @@ class DepressionDetectorApp:
             ("Age",                              "spinbox",   (15, 35)),
             ("Gender",                           "dropdown",  ["Male", "Female"]),
             ("Academic Pressure",                "scale",     (1, 5)),
-            ("Work Pressure",                    "scale",     (0, 5)),
             ("CGPA",                             "cgpa",      (0.0, 10.0)),
             ("Study Satisfaction",               "scale",     (1, 5)),
-            ("Job Satisfaction",                 "scale",     (1, 5)),
             ("Sleep Duration",                   "dropdown",  ["Less than 5 hours", "5-6 hours",
                                                                "7-8 hours", "More than 8 hours"]),
             ("Dietary Habits",                   "dropdown",  ["Healthy", "Moderate", "Unhealthy"]),
@@ -240,11 +238,11 @@ class DepressionDetectorApp:
             btn_frame,
             text="↺  Reset",
             command=self.reset,
-            bg=RESET_COLOR, fg=BTN_TEXT,
+            bg=CARD_COLOR, fg=LABEL_COLOR,
             font=(FONT_FAMILY, 11),
-            relief="flat", padx=16, pady=10,
+            relief="solid", bd=1, padx=16, pady=9,
             cursor="hand2",
-            activebackground="#4B5563", activeforeground=BTN_TEXT
+            activebackground="#F3F4F6", activeforeground=LABEL_COLOR
         )
         reset_btn.pack(side=tk.LEFT, padx=6)
 
@@ -306,10 +304,8 @@ class DepressionDetectorApp:
             "Age":                                    "Age",
             "Gender":                                 "Gender",
             "Academic Pressure":                      "Academic Pressure",
-            "Work Pressure":                          "Work Pressure",
             "CGPA":                                   "CGPA",
             "Study Satisfaction":                     "Study Satisfaction",
-            "Job Satisfaction":                       "Job Satisfaction",
             "Sleep Duration":                         "Sleep Duration",
             "Dietary Habits":                         "Dietary Habits",
             "Have you ever had suicidal thoughts ?":  "Have you ever had suicidal thoughts ?",
@@ -344,7 +340,7 @@ class DepressionDetectorApp:
         # --- Feature Engineering (same as train.py) ---
 
         # Stress_Score
-        stress_cols = ['Academic Pressure', 'Work Pressure', 'Financial Stress']
+        stress_cols = ['Academic Pressure', 'Financial Stress']
         stress_vals = [row.get(c, 0.0) for c in stress_cols if c in row]
         if stress_vals:
             row['Stress_Score'] = float(np.mean(stress_vals))
@@ -465,10 +461,8 @@ class DepressionDetectorApp:
             "Age":                                    20,
             "Gender":                                 "Male",
             "Academic Pressure":                      3.0,
-            "Work Pressure":                          0.0,
             "CGPA":                                   7.0,
             "Study Satisfaction":                     3.0,
-            "Job Satisfaction":                       3.0,
             "Sleep Duration":                         "7-8 hours",
             "Dietary Habits":                         "Moderate",
             "Have you ever had suicidal thoughts ?":  "No",
