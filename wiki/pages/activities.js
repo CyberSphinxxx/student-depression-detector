@@ -9,14 +9,14 @@ export default function Activities() {
       title: 'Lecture Activity 2 — EDA Planning',
       content: (
         <div className="space-y-4">
-          <p className="font-semibold text-gray-900">Type: <span className="font-normal text-gray-700">Lecture Activity</span> | Topic: <span className="font-normal text-gray-700">EDA Planning</span></p>
+          <p className="font-semibold text-foreground">Type: <span className="font-normal text-foreground/80">Lecture Activity</span> | Topic: <span className="font-normal text-foreground/80">EDA Planning</span></p>
           <div>
-            <h4 className="font-semibold text-gray-800">What I did:</h4>
-            <p className="text-gray-700">I examined the Student Depression Dataset and identified its important components to plan the EDA properly.</p>
+            <h4 className="font-semibold text-foreground">What I did:</h4>
+            <p className="text-foreground/80">I examined the Student Depression Dataset and identified its important components to plan the EDA properly.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Key findings from planning:</h4>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+            <h4 className="font-semibold text-foreground">Key findings from planning:</h4>
+            <ul className="list-disc pl-5 space-y-1 text-foreground/80">
               <li>Dataset title: Student Depression Dataset (Kaggle)</li>
               <li>Text/categorical features: Gender, City, Profession, Sleep Duration, Dietary Habits, Degree, Have you ever had suicidal thoughts?, Family History of Mental Illness</li>
               <li>Target variable: Depression (binary — 0 or 1)</li>
@@ -27,8 +27,8 @@ export default function Activities() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Planned EDA steps:</h4>
-            <ol className="list-decimal pl-5 space-y-1 text-gray-700">
+            <h4 className="font-semibold text-foreground">Planned EDA steps:</h4>
+            <ol className="list-decimal pl-5 space-y-1 text-foreground/80">
               <li>Load the dataset and display the first 5 rows</li>
               <li>Check shape, column names, and data types</li>
               <li>Identify and handle missing values</li>
@@ -45,14 +45,14 @@ export default function Activities() {
       title: 'Lab Activity 2 — EDA Implementation',
       content: (
         <div className="space-y-4">
-          <p className="font-semibold text-gray-900">Type: <span className="font-normal text-gray-700">Laboratory Activity</span> | Topic: <span className="font-normal text-gray-700">Exploratory Data Analysis</span></p>
+          <p className="font-semibold text-foreground">Type: <span className="font-normal text-foreground/80">Laboratory Activity</span> | Topic: <span className="font-normal text-foreground/80">Exploratory Data Analysis</span></p>
           <div>
-            <h4 className="font-semibold text-gray-800">What I did:</h4>
-            <p className="text-gray-700">I implemented the EDA plan in a Jupyter Notebook using Python with pandas, numpy, matplotlib, and seaborn.</p>
+            <h4 className="font-semibold text-foreground">What I did:</h4>
+            <p className="text-foreground/80">I implemented the EDA plan in a Jupyter Notebook using Python with pandas, numpy, matplotlib, and seaborn.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Steps completed:</h4>
-            <ol className="list-decimal pl-5 space-y-1 text-gray-700">
+            <h4 className="font-semibold text-foreground">Steps completed:</h4>
+            <ol className="list-decimal pl-5 space-y-1 text-foreground/80">
               <li>Loaded dataset with <code>pd.read_csv()</code> and displayed <code>df.head()</code></li>
               <li>Checked shape (27,901 x 18), all column names and data types</li>
               <li>Ran <code>df.isnull().sum()</code> — found 3 missing values in Financial Stress only</li>
@@ -64,8 +64,8 @@ export default function Activities() {
             </ol>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Output:</h4>
-            <p className="text-gray-700">Fully executed Jupyter Notebook with all 6 visualizations and 5 written observations</p>
+            <h4 className="font-semibold text-foreground">Output:</h4>
+            <p className="text-foreground/80">Fully executed Jupyter Notebook with all 6 visualizations and 5 written observations</p>
           </div>
         </div>
       )
@@ -74,14 +74,14 @@ export default function Activities() {
       title: 'Lecture Activity 3 — Model Comparison Planning',
       content: (
         <div className="space-y-4">
-          <p className="font-semibold text-gray-900">Type: <span className="font-normal text-gray-700">Lecture Activity</span> | Topic: <span className="font-normal text-gray-700">Model Comparison and Evaluation</span></p>
+          <p className="font-semibold text-foreground">Type: <span className="font-normal text-foreground/80">Lecture Activity</span> | Topic: <span className="font-normal text-foreground/80">Model Comparison and Evaluation</span></p>
           <div>
-            <h4 className="font-semibold text-gray-800">What I did:</h4>
-            <p className="text-gray-700">I answered discussion questions about model evaluation theory to understand how to fairly compare ML models before coding anything.</p>
+            <h4 className="font-semibold text-foreground">What I did:</h4>
+            <p className="text-foreground/80">I answered discussion questions about model evaluation theory to understand how to fairly compare ML models before coding anything.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Discussion questions I answered:</h4>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+            <h4 className="font-semibold text-foreground">Discussion questions I answered:</h4>
+            <ul className="list-disc pl-5 space-y-2 text-foreground/80">
               <li><strong>Why one model is not enough</strong> — Different models have different strengths. Testing multiple models lets me compare fairly and pick the best one for my dataset.</li>
               <li><strong>Why accuracy alone is not enough</strong> — In my dataset, 58.5% are depressed. A model predicting "depressed" for everyone would get 58.5% accuracy without learning anything. I also need precision, recall, and F1 score.</li>
               <li><strong>How false positives and negatives affect decisions</strong> — A false negative (predicting not depressed when they actually are) is the most dangerous error because the student misses out on help. A false positive causes a false alarm but is less harmful.</li>
@@ -95,14 +95,14 @@ export default function Activities() {
       title: 'Lab Activity 3 — Model Comparison',
       content: (
         <div className="space-y-4">
-          <p className="font-semibold text-gray-900">Type: <span className="font-normal text-gray-700">Laboratory Activity</span> | Topic: <span className="font-normal text-gray-700">Training and Comparing 5 Models</span></p>
+          <p className="font-semibold text-foreground">Type: <span className="font-normal text-foreground/80">Laboratory Activity</span> | Topic: <span className="font-normal text-foreground/80">Training and Comparing 5 Models</span></p>
           <div>
-            <h4 className="font-semibold text-gray-800">What I did:</h4>
-            <p className="text-gray-700">I trained five ML models on the Student Depression Dataset, compared their performance using four metrics, and selected the best two for tuning.</p>
+            <h4 className="font-semibold text-foreground">What I did:</h4>
+            <p className="text-foreground/80">I trained five ML models on the Student Depression Dataset, compared their performance using four metrics, and selected the best two for tuning.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Steps completed:</h4>
-            <ol className="list-decimal pl-5 space-y-1 text-gray-700">
+            <h4 className="font-semibold text-foreground">Steps completed:</h4>
+            <ol className="list-decimal pl-5 space-y-1 text-foreground/80">
               <li>Encoded all categorical columns using <code>LabelEncoder</code></li>
               <li>Dropped 3 rows with missing Financial Stress values</li>
               <li>Dropped the <code>id</code> column (not useful for prediction)</li>
@@ -115,8 +115,8 @@ export default function Activities() {
             </ol>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">Results:</h4>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+            <h4 className="font-semibold text-foreground">Results:</h4>
+            <ul className="list-disc pl-5 space-y-1 text-foreground/80">
               <li><strong>Highest Accuracy:</strong> Logistic Regression — 84.48%</li>
               <li><strong>Highest Recall:</strong> Naive Bayes — 0.9960</li>
               <li><strong>Best F1 Score:</strong> Logistic Regression — 0.8694</li>
