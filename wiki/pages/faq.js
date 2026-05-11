@@ -37,11 +37,11 @@ export default function FAQ() {
         },
         {
           q: "What were your key EDA findings?",
-          a: "Five findings: (1) Mild class imbalance of 58.5% vs 41.5%. (2) Academic pressure is the strongest predictor — correlation of 0.47. (3) Students sleeping less than 5 hours are more likely to be depressed. (4) Unhealthy diet and high financial stress are linked to depression. (5) CGPA has almost no correlation (0.02) with depression — grades alone are a poor predictor of mental health."
+          a: "Five findings: (1) Mild class imbalance of 58.5% vs 41.5%. (2) Suicidal Thoughts is the biggest contributor to depression, followed by Academic pressure (correlation 0.47). (3) Students sleeping less than 5 hours are more likely to be depressed. (4) Unhealthy diet and high financial stress are linked to depression. (5) CGPA has almost no correlation (0.02) with depression — grades alone are a poor predictor of mental health."
         },
         {
           q: "What does the correlation heatmap show?",
-          a: "Academic Pressure (0.47) and Financial Stress (0.36) have the strongest positive correlations with Depression. CGPA (0.02) is the weakest. Study Satisfaction (-0.17) is negatively correlated — more satisfied students tend to be less depressed. Age is -0.23."
+          a: "While Suicidal Thoughts is the biggest contributor overall, among numeric features, Academic Pressure (0.47) and Financial Stress (0.36) have the strongest positive correlations with Depression. CGPA (0.02) is the weakest. Study Satisfaction (-0.17) is negatively correlated — more satisfied students tend to be less depressed. Age is -0.23."
         },
         {
           q: "Why is CGPA a weak predictor?",
